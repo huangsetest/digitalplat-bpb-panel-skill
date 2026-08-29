@@ -1,0 +1,69 @@
+examples:
+  - id: full-setup
+    title:
+      zh: 从零部署全套
+      en: Full setup from scratch
+    description:
+      zh: 注册免费域名并一路部署到 Clash 客户端可用
+      en: Register a free domain and deploy through to a working Clash client
+    prompt:
+      zh: |-
+        接管浏览器，帮我从零部署自建代理：
+        1. 在 DigitalPlat 注册免费域名 {{想要的域名名，留空则自动挑选可用}}
+        2. 托管到 Cloudflare
+        3. 用 BPB Wizard 部署面板并绑定该域名
+        4. 面板账号 {{邮箱}} / {{密码}}
+        5. 获取 Clash 订阅并导入 Clash Party
+      en: |-
+        Take over the browser and set up my self-hosted proxy from scratch:
+        1. Register a free DigitalPlat domain: {{desired name, or auto-pick}}
+        2. Delegate it to Cloudflare
+        3. Deploy BPB Panel via the wizard and bind the domain
+        4. Panel account {{email}} / {{password}}
+        5. Get the Clash subscription and import it into Clash Party
+  - id: deploy-bpb
+    title:
+      zh: 仅部署 BPB 面板
+      en: Deploy BPB panel only
+    description:
+      zh: 已有 Cloudflare 账户和域名时，只部署面板并出订阅
+      en: With CF account and domain ready, only deploy the panel and produce a subscription
+    prompt:
+      zh: |-
+        用 BPB Wizard 在 Cloudflare 账户 {{账户名或留空默认}} 上部署面板，
+        绑定域名 {{已有域名}}，面板密码设为 {{密码}}，最后给我 Clash 订阅链接。
+      en: |-
+        Deploy BPB Panel via the wizard on Cloudflare account {{name or default}},
+        bind domain {{existing domain}}, set panel password to {{password}},
+        then give me the Clash subscription URL.
+  - id: import-subscription
+    title:
+      zh: 导入订阅到 Clash Party
+      en: Import subscription into Clash Party
+    description:
+      zh: 把已有订阅链接导入本机 Clash Party 并验证可用
+      en: Import an existing subscription URL into local Clash Party and verify
+    prompt:
+      zh: |-
+        把订阅 {{订阅URL}} 导入 Clash Party（%APPDATA%\mihomo-party），
+        设为当前配置并重启，用 7890 端口 generate_204 验证通畅。
+      en: |-
+        Import subscription {{subscription URL}} into Clash Party (%APPDATA%\mihomo-party),
+        set it current, restart, and verify via generate_204 through port 7890.
+  - id: fix-dead-nodes
+    title:
+      zh: 修复面板节点不通
+      en: Fix dead panel nodes
+    description:
+      zh: 订阅导入后代理不通、节点超时时的排障流程
+      en: Troubleshooting when imported nodes time out
+    prompt:
+      zh: |-
+        Clash Party 走 {{面板域名}} 的订阅代理不通（7890 返回 000），
+        按 core 日志排查：多半是节点 SNI 还是 workers.dev，
+        去 BPB 面板改 Custom CDN 三项为自有域名并 Apply，再重载订阅验证。
+      en: |-
+        Proxy via subscription on {{panel domain}} fails (7890 returns 000).
+        Diagnose from core logs: likely nodes still use workers.dev SNI.
+        Fix BPB panel Custom CDN fields to the custom domain, Apply,
+        reload the subscription and verify.
